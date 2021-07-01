@@ -103,13 +103,13 @@ client.on('ready', () => {
 // Checks if any given message is a command, or one-ups Jkc's inferior CamelBot
 client.on('message', async msg => {
 	if (msg.content.toLowerCase() === 'good bot') {
-		msg.channel.send("I'm better though!"); // Sorry not sorry
+		msg.channel.send("I'm better though!"); // smh
 	}
-	if (!(msg.content[0] === prefix)) return;
+	if (msg.startsWith(prefix)) return;
 	let command = msg.content.slice(prefix.length).split(' ');
 	let keyword = command[0];
 	Commands[keyword](msg);
 });
 
 // Cool kidz only B)
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOK;
