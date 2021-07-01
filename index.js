@@ -1,12 +1,28 @@
 // Authored by FGamerJ#9611
 
-// This makes the bot work, no touchies :P
+// This makes the bot work, no touchies if you don't know what you're doing B)
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const fs = require('fs')
 require('discord-reply');
 require('dotenv').config();
 const client = new Discord.Client();
-let prefix = '-';
+const private
+try{
+	private = require('./private.json');
+}catch(err){
+	console.error(err);
+	console.log("Unable to open configuration file, creating new one");
+	fs.writeFile('./private.json',JSON.stringify({
+		"key":"pasteKeyHere",
+		"prefix":"-"
+	}),()=>{});
+}
+
+
+
+
+let prefix = private.prefix;
 
 // Rubiks cube-related stuff
 const scrambleLength = 20;
