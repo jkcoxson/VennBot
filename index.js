@@ -112,4 +112,6 @@ client.on('message', async msg => {
 });
 
 // Cool kidz only B)
-client.login(process.env.BOT_TOK;
+client.login(private.key).catch((err)=>{
+	console.error("Failed to connect to Discord API, check your key and connection");
+});
