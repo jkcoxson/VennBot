@@ -3,26 +3,30 @@
 // This makes the bot work, no touchies if you don't know what you're doing B)
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-const fs = require('fs')
+const fs = require('fs');
+const { exitCode } = require('process');
 require('discord-reply');
 require('dotenv').config();
 const client = new Discord.Client();
 let private
+let prefix
 try{
 	private = require('./private.json');
+	prefix = private.prefix;
 }catch(err){
 	console.error(err);
 	console.log("Unable to open configuration file, creating new one");
 	fs.writeFile('./private.json',JSON.stringify({
 		"key":"pasteKeyHere",
 		"prefix":"-"
-	}),()=>{});
+	}),()=>{process.exit(1);});
+	
 }
 
 
 
 
-let prefix = private.prefix;
+
 
 // Rubiks cube-related stuff
 const scrambleLength = 20;
@@ -112,6 +116,9 @@ client.on('message', async msg => {
 });
 
 // Cool kidz only B)
-client.login(private.key).catch((err)=>{
-	console.error("Failed to connect to Discord API, check your key and connection");
-});
+if(private!=undefined){
+	client.login(private.key).catch((err)=>{
+		console.error("Failed to connect to Discord API, check your key and connection");
+	});
+}
+
