@@ -112,7 +112,7 @@ client.on('message', async msg => {
 	if (msg.content.toLowerCase() === 'good bot') {
 		msg.channel.send("I'm better though!"); // smh
 	}
-	if (msg.startsWith(prefix)) return;
+	if (msg.content.startsWith(prefix)) return;
 	let command = msg.content.slice(prefix.length).split(' ');
 	let keyword = command[0];
 	Commands[keyword](msg);
