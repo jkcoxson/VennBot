@@ -7,7 +7,7 @@ const fs = require('fs')
 require('discord-reply');
 require('dotenv').config();
 const client = new Discord.Client();
-const private
+let private
 try{
 	private = require('./private.json');
 }catch(err){
