@@ -15,11 +15,14 @@ try{
 	prefix = private.prefix;
 }catch(err){
 	console.error(err);
-	console.log("Unable to open configuration file, creating new one");
+	console.error("Unable to open configuration file, creating new one.");
 	fs.writeFile('./private.json',JSON.stringify({
 		"key":"pasteKeyHere",
 		"prefix":"-"
-	}),()=>{process.exit(1);});
+	},null,'\t'),()=>{
+		console.log("Exiting, paste your token into private.json");
+		process.exit(1);
+	});
 	
 }
 
